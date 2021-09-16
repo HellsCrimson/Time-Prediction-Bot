@@ -6,7 +6,7 @@ module.exports = {
 		.setName('see')
 		.setDescription('See all prediction'),
 	async execute(interaction) {
-		if(interaction.prediction.length == 0)
+		if(process_prediction.prediction.length == 0)
 		{
 			await interaction.reply({content:"There are no prediction", ephemeral: true});
 		}
