@@ -3,8 +3,12 @@ const process_prediction = require('../process-prediction.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('prediction')
-		.setDescription('Propose a prediction')
+		.setName('forother')
+		.setDescription('Propose a prediction for someone else')
+        .addUserOption(options =>
+            options.setName('person')
+            .setDescription('Person you predict for')
+            .setRequired(true))
 		.addIntegerOption(option =>
 			option.setName('time')
 				.setDescription('Time until arrival in minutes')
@@ -16,9 +20,10 @@ module.exports = {
 		}
 		else
 		{
-			if (process_prediction.prediction.find(predic => predic[0] == interaction.user))
+            const voting_person = interaction.options.getUser('person');
+			if (process_prediction.prediction.find(predic => predic[0] == voting_person))
 			{
-				await interaction.reply({content: 'You already have a prediction', ephemeral: true});
+				await interaction.reply({content: 'He already have a prediction', ephemeral: true});
 			}
 			else 
 			{
@@ -30,14 +35,14 @@ module.exports = {
 				else
 				{
 					const time = Date.now() + (selected * 60000);
-					process_prediction.prediction.push([interaction.user, time]);
+					process_prediction.prediction.push([voting_person, time]);
 					var myDate = new Date(time);
 
 					let hours = myDate.getHours();
 					let minutes = myDate.getMinutes();
 					let seconds = myDate.getSeconds();
 
-					await interaction.reply(`Prediction ${selected}min registred. Predicted time: ${hours}:${minutes}:${seconds}`);
+					await interaction.reply(`Prediction ${selected}min registred for ${voting_person}. Predicted time: ${hours}:${minutes}:${seconds}`);
 				}
 			}
 		}
