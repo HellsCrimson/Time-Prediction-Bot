@@ -20,9 +20,22 @@ module.exports = {
 		{
 			process_prediction.predictionGoing = false;
             const endTime = Date.now();
-            const winner = process_prediction.find_closer(interaction.user, process_prediction.prediction, endTime, endTime + 120000);
-            process_prediction.prediction = [];
-			await interaction.reply(`${winner[0]} won with ${Math.round(Math.abs(winner[1] - endTime) / 60000)}min time difference`);
+            const winners = process_prediction.find_closer(interaction.user, process_prediction.prediction, endTime, endTime + 120000);
+			if (process_prediction.prediction.length == 1)
+			{
+				process_prediction.prediction = [];
+				await interaction.reply(`${winners[0][0]} won with ${Math.round(Math.abs(winners[0][1] - endTime) / 60000)}min time difference`);
+			}
+			else if (process_prediction.prediction.length == 2)
+			{
+				process_prediction.prediction = [];
+				await interaction.reply(`${winners[0][0]} won with ${Math.round(Math.abs(winners[0][1] - endTime) / 60000)}min time difference\n${winners[1][0]} was second with ${Math.round(Math.abs(winners[1][1] - endTime) / 60000)}min time difference`);
+			}
+			else
+			{
+				process_prediction.prediction = [];
+				await interaction.reply(`${winners[0][0]} won with ${Math.round(Math.abs(winners[0][1] - endTime) / 60000)}min time difference\n${winners[1][0]} was second with ${Math.round(Math.abs(winners[1][1] - endTime) / 60000)}min time difference\n${winners[2][0]} was third with ${Math.round(Math.abs(winners[2][1] - endTime) / 60000)}min time difference`);
+			}
 		}
 	},
 };
