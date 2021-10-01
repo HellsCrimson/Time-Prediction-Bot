@@ -12,7 +12,7 @@ module.exports = {
 		}
 		else 
 		{
-			var predictions = 'Here are the predictions:\n';
+			var predictions = `Here are the predictions for ${process_prediction.name}:\n`;
 			process_prediction.prediction.forEach(prediction => predictions += [prediction[0]] + ", " + process_prediction.get_date(prediction[1]) + "\n");
 			await interaction.reply({content: predictions, ephemeral: true});	
 		}

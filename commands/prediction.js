@@ -18,7 +18,7 @@ module.exports = {
 		{
 			if (process_prediction.prediction.find(predic => predic[0] == interaction.user))
 			{
-				await interaction.reply({content: 'You already have a prediction', ephemeral: true});
+				await interaction.reply({content: `You already have a prediction for ${process_prediction.name}`, ephemeral: true});
 			}
 			else 
 			{
@@ -37,7 +37,7 @@ module.exports = {
 					let minutes = myDate.getMinutes();
 					let seconds = myDate.getSeconds();
 
-					await interaction.reply(`Prediction ${selected}min registred. Predicted time: ${hours}:${minutes}:${seconds}`);
+					await interaction.reply(`Prediction ${selected}min registred for ${process_prediction.name}. Predicted time: ${hours}:${minutes}:${seconds}`);
 				}
 			}
 		}

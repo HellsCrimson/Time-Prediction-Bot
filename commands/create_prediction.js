@@ -18,7 +18,7 @@ module.exports = {
 		else
 		{
 			process_prediction.predictionGoing = true;
-			process_prediction.about = name;
+			process_prediction.name = name;
 			await interaction.reply(`Prediction about ${name} registred`);
 		}
 	},

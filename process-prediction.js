@@ -1,7 +1,7 @@
 module.exports = {
     predictionGoing: false,
     prediction: [],
-    about: "",
+    name: "",
     get_date: function(myDate) {
         const date = new Date(myDate)
         const hours = date.getHours();
