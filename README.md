@@ -17,6 +17,6 @@ The content should be in this form
 {
   "token": "Your app token",
   "guildId": "The id of the guild",
-  "userId": "The id of your bot"
+  "clientId": "The id of your bot"
 }
 ```
