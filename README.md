@@ -1,6 +1,6 @@
 # Prediction Bot
 This is a Discord Bot made for prediction.<br>
-It is curently composed of six commands:<br>
+It is curently composed of seven commands:<br>
   - Create -> create the prediction (need a name)
   - Predict -> predict with an integer
   - For Other -> predict for someone else
