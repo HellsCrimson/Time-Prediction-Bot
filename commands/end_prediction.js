@@ -26,20 +26,20 @@ module.exports = {
 			if (process_prediction.prediction.length == 1)
 			{
 				process_prediction.prediction = [];
-				await interaction.reply(`${winners[0][0]} won with ${Math.round(Math.abs(winners[0][1] - endTime) / 60000)}min time difference`);
+				await interaction.reply(`${winners[0][0]} won with ${Math.round(Math.abs(winners[0][1] - endTime) / 60000)}min time difference (${winners[0][1] - endTime}ms)`);
 			}
 			else if (process_prediction.prediction.length == 2)
 			{
 				process_prediction.prediction = [];
-				await interaction.reply(`${winners[0][0]} won with ${Math.round(Math.abs(winners[0][1] - endTime) / 60000)}min time difference\n` + 
-				`${winners[1][0]} was second with ${Math.round(Math.abs(winners[1][1] - endTime) / 60000)}min time difference`);
+				await interaction.reply(`${winners[0][0]} won with ${Math.round(Math.abs(winners[0][1] - endTime) / 60000)}min time difference (${winners[0][1] - endTime}ms)\n` + 
+				`${winners[1][0]} was second with ${Math.round(Math.abs(winners[1][1] - endTime) / 60000)}min time difference (${winners[1][1] - endTime}ms)`);
 			}
 			else
 			{
 				process_prediction.prediction = [];
-				await interaction.reply(`${winners[0][0]} won with ${Math.round(Math.abs(winners[0][1] - endTime) / 60000)}min time difference\n` + 
-				`${winners[1][0]} was second with ${Math.round(Math.abs(winners[1][1] - endTime) / 60000)}min time difference\n` + 
-				`${winners[2][0]} was third with ${Math.round(Math.abs(winners[2][1] - endTime) / 60000)}min time difference`);
+				await interaction.reply(`${winners[0][0]} won with ${Math.round(Math.abs(winners[0][1] - endTime) / 60000)}min time difference (${winners[0][1] - endTime}ms)\n` + 
+				`${winners[1][0]} was second with ${Math.round(Math.abs(winners[1][1] - endTime) / 60000)}min time difference (${winners[1][1] - endTime}ms)\n` + 
+				`${winners[2][0]} was third with ${Math.round(Math.abs(winners[2][1] - endTime) / 60000)}min time difference (${winners[2][1] - endTime}ms)`);
 			}
 		}
 	},
