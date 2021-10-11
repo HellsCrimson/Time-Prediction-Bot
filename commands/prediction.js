@@ -6,9 +6,13 @@ module.exports = {
 		.setName('prediction')
 		.setDescription('Propose a prediction')
 		.addIntegerOption(option =>
-			option.setName('time')
+			option.setName('minutes')
 				.setDescription('Time until arrival in minutes')
-				.setRequired(true)),
+				.setRequired(true))
+		.addIntegerOption(option =>
+			option.setName('seconds')
+				.setDescription('Time until arrival in seconds')
+				.setRequired(false)),
 	async execute(interaction) {
 		if (!process_prediction.predictionGoing)
 		{
@@ -22,14 +26,20 @@ module.exports = {
 			}
 			else 
 			{
-				const selected = interaction.options.getInteger('time');
-				if (selected === null) 
+				const minutesSelected = interaction.options.getInteger('minutes');
+				if (minutesSelected === null) 
 				{
 					await interaction.reply({content: "You need to enter an integer", ephemeral: true})
 				}
 				else
 				{
-					const time = Date.now() + (selected * 60000);
+					const secondsSelected = interaction.options.getInteger('seconds');
+
+					if (secondsSelected === null)
+						const time = Date.now() + (minutesSelected * 60000);
+					else 
+						const time = Date.now() + (minutesSelected * 60000) + (secondsSelected * 1000);
+					
 					process_prediction.prediction.push([interaction.user, time]);
 					var myDate = new Date(time);
 
@@ -37,7 +47,10 @@ module.exports = {
 					let minutes = myDate.getMinutes();
 					let seconds = myDate.getSeconds();
 
-					await interaction.reply(`Prediction ${selected}min registred for ${process_prediction.name}. Predicted time: ${hours}:${minutes}:${seconds}`);
+					if (secondsSelected === null)
+						await interaction.reply(`Prediction ${minutesSelected}min registred for ${process_prediction.name}. Predicted time: ${hours}:${minutes}:${seconds}`);
+					else
+						await interaction.reply(`Prediction ${minutesSelected}min ${secondsSelected}s registred for ${process_prediction.name}. Predicted time: ${hours}:${minutes}:${seconds}`);
 				}
 			}
 		}
