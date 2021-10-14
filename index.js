@@ -1,10 +1,9 @@
 // Require the necessary discord.js classes
 const fs = require('fs');
-const { Client, Collection, Intents } = require('discord.js');
+const { Client, Collection, Intents, Guild } = require('discord.js');
 const { token } = require('./config.json');
-
-// Create a new client instance
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const { Scoreboard } = require('./database.js')
+const { client } = require('./client_instance.js');
 
 client.command = new Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -19,6 +18,8 @@ for (const file of commandFiles) {
 // When the client is ready, run this code (only once)
 client.once('ready', c => {
 	console.log(`Ready! Logged in as ${c.user.tag}`);
+	Scoreboard.sync();
+	console.log("Database sync");
 });
 
 client.on('interactionCreate', async interaction => {
@@ -32,7 +33,7 @@ client.on('interactionCreate', async interaction => {
 		await command.execute(interaction);
 	} catch (error) {
 		console.error(error);
-		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+		await interaction.reply({ content: `There was an error while executing this command!`, ephemeral: true });
 	}
 });
 
@@ -43,3 +44,5 @@ process.on('unhandledRejection', error => {
 
 // Login to Discord with your client's token
 client.login(token);
+
+exports.client = client;
