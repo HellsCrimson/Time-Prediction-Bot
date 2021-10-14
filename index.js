@@ -3,9 +3,7 @@ const fs = require('fs');
 const { Client, Collection, Intents, Guild } = require('discord.js');
 const { token } = require('./config.json');
 const { Scoreboard } = require('./database.js')
-
-// Create a new client instance
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const { client } = require('./client_instance.js');
 
 client.command = new Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -46,3 +44,5 @@ process.on('unhandledRejection', error => {
 
 // Login to Discord with your client's token
 client.login(token);
+
+exports.client = client;

@@ -1,5 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const process_prediction = require('../process-prediction.js');
+const add_db = require('../add_to_db.js');
+const { Scoreboard } = require('../database.js')
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -26,6 +28,9 @@ module.exports = {
 			}
 			else 
 			{
+				const score = await Scoreboard.findOne({ where: { name: interaction.user.id } });
+				add_db.add_db(interaction, score); // add if not in db
+
 				const minutesSelected = interaction.options.getInteger('minutes');
 				if (minutesSelected === null) 
 				{
