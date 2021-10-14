@@ -34,11 +34,16 @@ module.exports = {
 				else
 				{
 					const secondsSelected = interaction.options.getInteger('seconds');
+					var time = 0;
 
 					if (secondsSelected === null)
-						const time = Date.now() + (minutesSelected * 60000);
+					{
+						time = Date.now() + (minutesSelected * 60000);
+					}
 					else 
-						const time = Date.now() + (minutesSelected * 60000) + (secondsSelected * 1000);
+					{
+						time = Date.now() + (minutesSelected * 60000) + (secondsSelected * 1000);
+					}
 					
 					process_prediction.prediction.push([interaction.user, time]);
 					var myDate = new Date(time);
