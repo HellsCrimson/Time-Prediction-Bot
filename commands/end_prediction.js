@@ -16,7 +16,7 @@ module.exports = {
 		{
 			process_prediction.name = "";
 			process_prediction.predictionGoing = false;
-			client.user.setStatus("Waiting for a prediction");
+			client.user.setActivity("Waiting for a prediction");
 			process_prediction.prediction = [];
 			await interaction.reply("No one won <:sadcat:887788315078717481>");
 		}
@@ -24,7 +24,7 @@ module.exports = {
 		{
 			process_prediction.name = "";
 			process_prediction.predictionGoing = false;
-			client.user.setStatus("Waiting for a prediction");
+			client.user.setActivity("Waiting for a prediction");
             const endTime = Date.now();
             const winners = process_prediction.find_closer(interaction.user, process_prediction.prediction, endTime, endTime + 120000);
 			if (process_prediction.prediction.length == 1)

@@ -20,7 +20,7 @@ module.exports = {
 		{
 			process_prediction.predictionGoing = true;
 			process_prediction.name = name;
-			client.user.setStatus(`Prediction about ${name}`);
+			client.user.setActivity(`Prediction about ${name}`);
 			await interaction.reply(`Prediction about ${name} registred`);
 		}
 	},
