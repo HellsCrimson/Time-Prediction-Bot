@@ -45,5 +45,3 @@ process.on('unhandledRejection', error => {
 
 // Login to Discord with your client's token
 client.login(token);
-
-exports.client = client;

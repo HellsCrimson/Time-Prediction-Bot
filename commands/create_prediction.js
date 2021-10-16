@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const process_prediction = require('../process-prediction.js');
-const { client } = require('../index.js');
+const { client } = require('../client_instance.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
