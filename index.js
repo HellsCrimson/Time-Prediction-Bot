@@ -20,6 +20,7 @@ client.once('ready', c => {
 	console.log(`Ready! Logged in as ${c.user.tag}`);
 	Scoreboard.sync();
 	console.log("Database sync");
+	client.user.setStatus("Waiting for a prediction");
 });
 
 client.on('interactionCreate', async interaction => {
