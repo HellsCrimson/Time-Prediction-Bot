@@ -1,5 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const process_prediction = require('../process-prediction.js');
+const add_db = require('../add_to_db.js');
+const { Scoreboard } = require('../database.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -34,6 +36,18 @@ module.exports = {
 				}
 				else
 				{
+					const score = await Scoreboard.findOne({ where: { name: voting_person.id } });
+					if (!score)
+					{
+						Scoreboard.create({
+						name: voting_person.id,
+						top1: 0,
+						top2: 0,
+						top3: 0,
+						total: 0,
+						});
+					}
+
 					const time = Date.now() + (selected * 60000);
 					process_prediction.prediction.push([voting_person, time]);
 					var myDate = new Date(time);
