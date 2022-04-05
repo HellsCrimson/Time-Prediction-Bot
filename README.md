@@ -20,3 +20,6 @@ The content should be in this form
   "clientId": "The id of your bot"
 }
 ```
+
+## Docker
+Run `docker build --tag time_prediction .` to build the image.

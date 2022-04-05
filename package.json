@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "run": "node deploy-commands.js & node index.js"
+    "start": "node deploy-commands.js & node index.js"
   },
   "author": "Matthias Rauline",
   "license": "ISC",
