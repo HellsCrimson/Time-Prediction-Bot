@@ -1,7 +1,7 @@
 // Require the necessary discord.js classes
 const fs = require('fs');
 const { Client, Collection, Intents, Guild } = require('discord.js');
-const { token } = require('./config.json');
+require('dotenv').config();
 const { Scoreboard } = require('./database.js')
 const { client } = require('./client_instance.js');
 
@@ -44,4 +44,4 @@ process.on('unhandledRejection', error => {
 
 
 // Login to Discord with your client's token
-client.login(token);
+client.login(process.env.token);
