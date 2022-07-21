@@ -27,4 +27,5 @@ The content should be in this form
 ```
 
 ## Docker
-Run `docker build --tag time_prediction .` to build the image.
+Run `docker build --tag time_prediction .` to build the image. <br>
+Or use the precompiled image at `hellscrimson/timeprediction:latest`
