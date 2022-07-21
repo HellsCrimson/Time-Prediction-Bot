@@ -10,15 +10,15 @@
   "author": "Matthias Rauline",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/builders": "^0.6.0",
-    "@discordjs/rest": "^0.1.0-canary.0",
-    "discord-api-types": "^0.23.1",
-    "discord.js": "^13.1.0",
+    "@discordjs/builders": "^1.0.0",
+    "@discordjs/rest": "^1.0.0",
+    "discord-api-types": "^0.36.2",
+    "discord.js": "^14.0.3",
     "dotenv": "^16.0.1",
-    "sequelize": "^6.7.0",
-    "sqlite3": "^4.2.0"
+    "sequelize": "^6.21.3",
+    "sqlite3": "^5.0.9"
   },
   "devDependencies": {
-    "eslint": "^7.32.0"
+    "eslint": "^8.20.0"
   }
 }

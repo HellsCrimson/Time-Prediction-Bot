@@ -1,6 +1,6 @@
-const { Client, Intents } = require('discord.js');
+const { Client, GatewayIntentBits } = require('discord.js');
 
 module.exports = {
     // Create a new client instance
-    client: new Client({ intents: [Intents.FLAGS.GUILDS] }),
+    client: new Client({ intents: [GatewayIntentBits.Guilds] }),
 }
