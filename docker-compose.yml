@@ -1,0 +1,12 @@
+version: "2"
+services:
+  timepredbot:
+    image: hellscrimson/timeprediction:latest
+    container_name: time-pred-bot
+    volumes: 
+      - /your-own-path:/app/data #if you want to save the data in the database
+    environment:
+      - clientId=YOUR-CLIENT-ID
+      - guildId=YOUR-GUILD-ID
+      - token=YOUR-TOKEN
+    restart: unless-stopped
